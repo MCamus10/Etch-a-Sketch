@@ -1,6 +1,6 @@
 const canvas = document.querySelector("#canvasBox");
 function initialCanvas(){
-    for (let i = 0; i < 225; i++) {
+    for (let i = 0; i < 256; i++) {
         const square = document.createElement("div");
         square.classList.add("pixelClass");
         canvas.appendChild(square);
@@ -21,12 +21,12 @@ function promptSize(){
 
 function putPixels(canvasSize){
     deletePixelDivs();
-    const canvasWidthAndHeight = (canvasSize * 15) + 4;
-    canvas.style.width = `${canvasWidthAndHeight}px`;
-    canvas.style.height = `${canvasWidthAndHeight}px`;    
+    const pixelWidthAndHeight = 960/canvasSize;   
     for (let i = 0; i < (canvasSize**2); i++) {
         const square = document.createElement("div");
         square.classList.add("pixelClass");
+        square.style.width = `${pixelWidthAndHeight}px`;
+        square.style.height = `${pixelWidthAndHeight}px`;
         canvas.appendChild(square);
     };
     addMouseOver();
