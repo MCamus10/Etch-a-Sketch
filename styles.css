@@ -15,14 +15,14 @@
     flex-wrap: wrap;
     padding: 0;
     border: 2px solid black;
-    width: 324px;
-    height: 324px;
+    width: 304px;
+    height: 304px;
     margin: 0 auto;
 }
 
 .pixelClass {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background-color: white;
     margin: 0;
     padding: 0;

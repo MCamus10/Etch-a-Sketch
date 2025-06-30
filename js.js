@@ -1,3 +1,14 @@
+const canvas = document.querySelector("#canvasBox");
+function initialCanvas(){
+    for (let i = 0; i < 225; i++) {
+        const square = document.createElement("div");
+        square.classList.add("pixelClass");
+        canvas.appendChild(square);
+    };
+    addMouseOver();
+};
+initialCanvas();
+
 const sizeButton = document.querySelector("#canvasSizeButton");
 sizeButton.addEventListener("click", promptSize);
 function promptSize(){
@@ -8,36 +19,28 @@ function promptSize(){
     putPixels(size);
 };
 
-const canvas = document.querySelector("#canvasBox");
-function initialCanvas(){
-    for (let i = 0; i < 256; i++) {
-        const square = document.createElement("div");
-        square.classList.add("pixelClass");
-        canvas.appendChild(square);
-    };
-};
-initialCanvas();
-
 function putPixels(canvasSize){
-    cleanPixelDivs();
-    const canvasWidthAndHeight = (canvasSize * 20) + 4;
+    deletePixelDivs();
+    const canvasWidthAndHeight = (canvasSize * 15) + 4;
     canvas.style.width = `${canvasWidthAndHeight}px`;
     canvas.style.height = `${canvasWidthAndHeight}px`;    
-    for (let i = 0; i < canvasSize**2; i++) {
+    for (let i = 0; i < (canvasSize**2); i++) {
         const square = document.createElement("div");
         square.classList.add("pixelClass");
         canvas.appendChild(square);
     };
+    addMouseOver();
 };
 
-function cleanPixelDivs(){
-    const pixels = document.querySelector(".pixelClass");
+function deletePixelDivs(){
+    const pixels = document.querySelectorAll(".pixelClass");
     pixels.forEach(pixel => pixel.remove());
-}
-
-const pixels = document.querySelectorAll(".pixelClass");
-pixels.forEach(pixel => pixel.addEventListener("mouseover",changePixelColor));
-function changePixelColor(){
-     this.style.backgroundColor = "black";
 };
 
+function addMouseOver(){
+    const pixels = document.querySelectorAll(".pixelClass");
+    pixels.forEach(pixel => pixel.addEventListener("mouseover",changePixelColor));
+    function changePixelColor(){
+        this.style.backgroundColor = "black";
+    };
+};
